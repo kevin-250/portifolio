@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full max-w-7xl mx-auto bg-surface rounded-4xl p-6 md:p-12 shadow-card relative overflow-hidden content-visibility-auto"
+      className="w-full max-w-7xl mx-auto bg-surface rounded-4xl p-6 md:p-12 shadow-card relative overflow-hidden"
     >
       {/* Navbar */}
       <nav className="flex items-center justify-between mb-16 md:mb-24">
@@ -63,8 +63,8 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
         {/* Right Content / Image */}
         <div className="relative flex justify-center lg:justify-end">
-           {/* Abstract Circle Background - content-visibility optimization */}
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-gray-100 rounded-full -z-10 contain-strict"></div>
+           {/* Abstract Circle Background */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-gray-100 rounded-full -z-10"></div>
            
            {/* Floating Shapes - Added will-change for performance */}
            <motion.div 

@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Hero } from './components/Hero';
 
 // Lazy load non-critical sections to improve initial bundle size and hydration speed
