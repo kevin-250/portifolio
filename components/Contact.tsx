@@ -5,12 +5,12 @@ import { USER_INFO, SOCIALS } from '../constants';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="w-full max-w-7xl mx-auto pt-6 pb-6">
+    <section id="contact" className="w-full max-w-7xl mx-auto pt-6 pb-6 content-visibility-auto">
       <motion.div 
          initial={{ opacity: 0, y: 30 }}
          whileInView={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.8 }}
-         viewport={{ once: true }}
+         viewport={{ once: true, margin: "100px" }}
          className="bg-surfaceDark text-white rounded-4xl p-8 md:p-16 shadow-card overflow-hidden relative"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -24,6 +24,10 @@ export const Contact: React.FC = () => {
                       src="kevin.png" 
                       alt="Avatar" 
                       className="w-full h-full object-cover grayscale"
+                      loading="lazy"
+                      decoding="async"
+                      width="128"
+                      height="128"
                       onError={(e) => {
                         (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1615813967515-e1838c1c5116?auto=format&fit=crop&w=800&q=80';
                       }}

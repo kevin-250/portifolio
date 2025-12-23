@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full max-w-7xl mx-auto bg-surface rounded-4xl p-6 md:p-12 shadow-card relative overflow-hidden"
+      className="w-full max-w-7xl mx-auto bg-surface rounded-4xl p-6 md:p-12 shadow-card relative overflow-hidden content-visibility-auto"
     >
       {/* Navbar */}
       <nav className="flex items-center justify-between mb-16 md:mb-24">
@@ -39,7 +39,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
         {/* Left Content */}
         <div className="space-y-8 relative z-10">
            {/* Decorative Elements */}
-           <div className="absolute -top-10 -left-10 w-20 h-20 bg-orange-100 rounded-full blur-2xl opacity-50"></div>
+           <div className="absolute -top-10 -left-10 w-20 h-20 bg-orange-100 rounded-full blur-2xl opacity-50 pointer-events-none"></div>
 
            <div className="space-y-6">
              <h2 className="text-4xl md:text-6xl font-bold text-gray-900 leading-[1.1]">
@@ -63,21 +63,21 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
         {/* Right Content / Image */}
         <div className="relative flex justify-center lg:justify-end">
-           {/* Abstract Circle Background */}
-           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-gray-100 rounded-full -z-10"></div>
+           {/* Abstract Circle Background - content-visibility optimization */}
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] bg-gray-100 rounded-full -z-10 contain-strict"></div>
            
-           {/* Floating Shapes */}
+           {/* Floating Shapes - Added will-change for performance */}
            <motion.div 
              animate={{ y: [-10, 10, -10] }}
              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-             className="absolute top-0 right-10 text-orange-400"
+             className="absolute top-0 right-10 text-orange-400 will-change-transform"
            >
               <Circle size={24} strokeWidth={3} />
            </motion.div>
            <motion.div 
              animate={{ rotate: [0, 360] }}
              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-             className="absolute bottom-20 left-10 text-black fill-black"
+             className="absolute bottom-20 left-10 text-black fill-black will-change-transform"
            >
               <Triangle size={20} />
            </motion.div>
@@ -85,10 +85,16 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
            {/* Profile Image (Masked) */}
            <div className="relative">
               <div className="w-[280px] h-[280px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-8 border-gray-100 shadow-2xl bg-gray-200">
+                 {/* Optimized Image Loading */}
                  <img 
                    src="kevin.png" 
                    alt="Kevin Profile" 
                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                   loading="eager"
+                   fetchPriority="high"
+                   width="400"
+                   height="400"
+                   decoding="async"
                    onError={(e) => {
                      // Fallback if image is missing
                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1615813967515-e1838c1c5116?auto=format&fit=crop&w=800&q=80';

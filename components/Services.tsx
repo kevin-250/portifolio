@@ -4,12 +4,12 @@ import { CheckSquare } from 'lucide-react';
 
 export const Services: React.FC = () => {
   return (
-    <section className="w-full max-w-7xl mx-auto pt-6">
+    <section className="w-full max-w-7xl mx-auto pt-6 content-visibility-auto">
       <motion.div 
          initial={{ opacity: 0, y: 30 }}
          whileInView={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.8 }}
-         viewport={{ once: true }}
+         viewport={{ once: true, margin: "100px" }}
          className="bg-surface rounded-4xl p-8 md:p-16 shadow-card overflow-hidden"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -39,7 +39,7 @@ export const Services: React.FC = () => {
 
            {/* Phone Mockup Visual */}
            <div className="relative flex justify-center md:justify-end">
-              <div className="relative w-64 h-[500px] bg-black rounded-[2.5rem] p-3 shadow-2xl border-4 border-gray-800 rotate-[-5deg] hover:rotate-0 transition-transform duration-500">
+              <div className="relative w-64 h-[500px] bg-black rounded-[2.5rem] p-3 shadow-2xl border-4 border-gray-800 rotate-[-5deg] hover:rotate-0 transition-transform duration-500 will-change-transform transform-gpu">
                  {/* Notch */}
                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl z-20"></div>
                  
@@ -49,6 +49,8 @@ export const Services: React.FC = () => {
                       src="https://images.unsplash.com/photo-1555421689-491a97ff2040?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
                       alt="App Mockup" 
                       className="w-full h-full object-cover grayscale opacity-80"
+                      loading="lazy"
+                      decoding="async"
                     />
                     
                     {/* Floating UI Elements inside phone */}
